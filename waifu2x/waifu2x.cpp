@@ -215,8 +215,6 @@ public:
 
 		this->vkdev->reclaim_blob_allocator(this->net.opt.blob_vkallocator);
 		this->vkdev->reclaim_staging_allocator(this->net.opt.staging_vkallocator);
-
-		ncnn::destroy_gpu_instance();
 	}
 	void load_models(const unsigned char* param, const unsigned char* model)
 	{
@@ -487,4 +485,6 @@ extern "C" void free_waifu2x(waifu2x_config * config, waifu2x * processer)
 		delete config;
 	if (processer)
 		delete processer;
+
+    ncnn::destroy_gpu_instance();
 }
